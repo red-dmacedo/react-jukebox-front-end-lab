@@ -2,6 +2,8 @@ import './App.sass';
 import { useState, useEffect } from 'react';
 import * as trackService from './services/trackService.js';
 import TrackList from './components/TrackList/TrackList.jsx';
+import TrackForm from './components/TrackForm/TrackForm.jsx';
+import NowPlaying from './components/NowPlaying/NowPlaying.jsx';
 
 
 const App = () => {
@@ -71,14 +73,25 @@ const App = () => {
     };
   };
 
+  const handlePlay = (track) => {
+    selectTrack(track);
+  };
+
   return (
     <>
-    <TrackList
-    tracks={tracks}
-    selectTrack={selectTrack}
-    isFormOpen={isFormOpen}
-    handleFormView={handleFormView}
-    />
+      <TrackList
+        tracks={tracks}
+        selectTrack={selectTrack}
+        isFormOpen={isFormOpen}
+        handleFormView={handleFormView}
+      />
+      {(isFormOpen) ? (
+        <TrackForm
+          selected={selected}
+          isFormOpen={isFormOpen}
+          handleAddTrack={handleAddTrack}
+          handleUpdateTrack={handleUpdateTrack}
+        />) : ('')}
     </>
   );
 };

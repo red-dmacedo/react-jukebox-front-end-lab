@@ -1,5 +1,6 @@
 const TrackList = (props) => {
-  const { tracks, selectTrack, handleFormView, isFormOpen } = props;
+  const { tracks, selectTrack, handleFormView, isFormOpen, handlePlay } = props;
+
   return (
     <div className="sidebar-container">
       <h1>Track List</h1>
@@ -13,8 +14,10 @@ const TrackList = (props) => {
                 key={track._id}
                 style={{ cursor: 'pointer', color: "#646CFF" }}
                 onClick={() => selectTrack(track)}
+                className="song-item"
               >
-                {track.title} by {track.artist}
+              <p>{track.title} by {track.artist}</p>
+              <button type="button" onClick={handlePlay} className="play-btn">▶️</button>
               </li>
             ))}
           </ul>
