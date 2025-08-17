@@ -1,6 +1,7 @@
-import './App.css';
+import './App.sass';
 import { useState, useEffect } from 'react';
-import * as trackService from '../services/trackService.js';
+import * as trackService from './services/trackService.js';
+import TrackList from './components/TrackList/TrackList.jsx';
 
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         console.log(err);
       }
     };
+    fetchTracks();
   }, []);
 
   const selectTrack = (track) => {
@@ -71,7 +73,12 @@ const App = () => {
 
   return (
     <>
-      <h1>Hello!2</h1>
+    <TrackList
+    tracks={tracks}
+    selectTrack={selectTrack}
+    isFormOpen={isFormOpen}
+    handleFormView={handleFormView}
+    />
     </>
   );
 };
