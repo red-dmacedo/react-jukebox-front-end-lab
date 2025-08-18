@@ -19,7 +19,7 @@ const TrackList = (props) => {
                 <div className="track-btns">
                   <button
                     type="button"
-                    onClick={() => props.handlePlay(track)}
+                    onClick={() => props.handleNowPlaying(track)}
                     className="play-btn play-icon track-btn"
                     title="Play Track"
                   >▶</button>

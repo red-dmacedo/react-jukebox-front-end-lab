@@ -10,6 +10,7 @@ const App = () => {
   const [tracks, setTracks] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [nowPlaying, setNowPlaying] = useState(null);
 
   useEffect(() => {
     const fetchTracks = async () => {
@@ -73,8 +74,8 @@ const App = () => {
     };
   };
 
-  const handlePlay = (track) => {
-    selectTrack(track);
+  const handleNowPlaying = (track) => {
+    (track) ? setNowPlaying(track) : setNowPlaying(null);
   };
 
   return (
@@ -85,7 +86,7 @@ const App = () => {
         isFormOpen={isFormOpen}
         handleFormView={handleFormView}
         handleRemoveTrack={handleRemoveTrack}
-        handlePlay={handlePlay}
+        handleNowPlaying={handleNowPlaying}
       />
       {(isFormOpen) ? (
         <TrackForm
@@ -94,7 +95,8 @@ const App = () => {
           handleUpdateTrack={handleUpdateTrack}
         />) : (
         <NowPlaying
-          selected={selected}
+          nowPlaying={nowPlaying}
+          handleNowPlaying={handleNowPlaying}
         />
       )}
     </>
