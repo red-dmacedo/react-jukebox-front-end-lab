@@ -2,10 +2,11 @@
 $linkColor: rgb(100, 100, 255)
 $linkColorHover: rgb(150, 150, 255)
 $playBtnWidth: 74px
-$playBtnWidthHalf: $playBtnWidth/2
+$playBtnWidthHalf: calc($playBtnWidth/2)
 $fontSize: 1.2rem
 $backgroundHighlight: rgb(50,50,50)
 $sideBarBackgroundColor: rgb(30,30,30)
+$listBackgroundColor: rgb(40,40,40);
 $buttonBackgroundColor: rgb(80,80,80)
 
 /* ===== Elements ===== */
@@ -27,7 +28,6 @@ li
     text-decoration: underline
 
 button
-  margin: 10px
   background-color: $buttonBackgroundColor
 
 form
@@ -50,29 +50,44 @@ form
   display: flex
   flex-direction: column
   overflow-y: scroll
-  margin: 10px
+  min-width: 100%
+  background-color: $listBackgroundColor
 
 .song-item
   display: flex
-  flex-flow: row
+  flex-flow: column
   justify-content: space-between
   &:hover
     background-color: $backgroundHighlight
   p
+    margin: 0px 0px 10px 0px
     color: $linkColor !important
     &:hover
       color: $linkColorHover !important
+  .song-artist
+    font-size: $fontSize*.7
+  .song-title
+    font-weight: bold
+
+.track-btns
+  display: flex
+  flex-direction: row
+  gap: 10px
   button
-    border-radius: 0px
-    margin: 0px !important
-    box-sizing: border-box
-    width: 10px
+    width: 1/2
+    border-radius: 0px !important
+    background-color: transparent
     display: flex
-    flex-flow: row wrap
     align-content: center
     justify-content: center
-    font-size: $fontSize
-    background-color: transparent
+    font-size: $fontSize*.5
+
+.play-icon
+  // background: url("file://./assets/play.svg") no-repeat center center fixed
+
+.input-line
+  display: flex
+  flex-flow: row wrap
 
 /* ===== Ids ===== */
 #root
@@ -80,3 +95,6 @@ form
   width: 100%
   display: grid
   grid-template-columns: fit-content(375px) 1fr
+
+#form-change-btn
+  margin: 10px

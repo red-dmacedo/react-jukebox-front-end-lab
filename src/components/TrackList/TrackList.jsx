@@ -1,5 +1,5 @@
 const TrackList = (props) => {
-  const { tracks, selectTrack, handleFormView, isFormOpen, handlePlay } = props;
+  const { tracks, selectTrack, handleFormView, isFormOpen, handlePlay, handleRemoveTrack } = props;
 
   return (
     <div className="sidebar-container">
@@ -16,14 +16,34 @@ const TrackList = (props) => {
                 onClick={() => selectTrack(track)}
                 className="song-item"
               >
-              <p>{track.title} by {track.artist}</p>
-              <button type="button" onClick={handlePlay} className="play-btn">▶️</button>
+                <p className="song-title">{track.title}</p>
+                <p className="song-artist">by: {track.artist}</p>
+                <div className="track-btns">
+                  <button
+                    type="button"
+                    onClick={() => handlePlay(track)}
+                    className="play-btn play-icon"
+                    title="Play Track"
+                  >▶</button>
+                  <button
+                    type="button"
+                    onClick={() => handleFormView(track)}
+                    className="edit-btn"
+                    title="Edit Track"
+                  >Edit</button>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveTrack(track._id)}
+                    className="delete-btn"
+                    title="Delete Track"
+                  >🗑</button>
+                </div>
               </li>
             ))}
           </ul>
         )}
       </div>
-      <button onClick={handleFormView}>{isFormOpen ? "Close Form" : "New Track"}</button>
+      <button onClick={handleFormView} id="form-change-btn">{isFormOpen ? "Close Form" : "New Track"}</button>
     </div>
   );
 };

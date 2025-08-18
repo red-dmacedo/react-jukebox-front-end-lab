@@ -84,14 +84,21 @@ const App = () => {
         selectTrack={selectTrack}
         isFormOpen={isFormOpen}
         handleFormView={handleFormView}
+        handleRemoveTrack={handleRemoveTrack}
+        handlePlay={handlePlay}
       />
       {(isFormOpen) ? (
         <TrackForm
           selected={selected}
           isFormOpen={isFormOpen}
+          handleFormView={handleFormView}
           handleAddTrack={handleAddTrack}
           handleUpdateTrack={handleUpdateTrack}
-        />) : ('')}
+        />) : (
+          <NowPlaying
+          selected={selected}
+          />
+        )}
     </>
   );
 };
