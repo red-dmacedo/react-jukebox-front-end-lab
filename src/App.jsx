@@ -4,7 +4,11 @@ import * as trackService from './services/trackService.js';
 import TrackList from './components/TrackList/TrackList.jsx';
 import TrackForm from './components/TrackForm/TrackForm.jsx';
 import NowPlaying from './components/NowPlaying/NowPlaying.jsx';
+import Footer from './components/Footer/Footer.jsx';
 
+const attributions = [
+  { text: "Images designed by:", title: "Freepik", link: "https://www.freepik.com", }
+];
 
 const App = () => {
   const [tracks, setTracks] = useState([]);
@@ -88,17 +92,20 @@ const App = () => {
         handleRemoveTrack={handleRemoveTrack}
         handleNowPlaying={handleNowPlaying}
       />
-      {(isFormOpen) ? (
-        <TrackForm
-          selected={selected}
-          handleAddTrack={handleAddTrack}
-          handleUpdateTrack={handleUpdateTrack}
-        />) : (
-        <NowPlaying
-          nowPlaying={nowPlaying}
-          handleNowPlaying={handleNowPlaying}
-        />
-      )}
+      <div className='page'>
+        {(isFormOpen) ? (
+          <TrackForm
+            selected={selected}
+            handleAddTrack={handleAddTrack}
+            handleUpdateTrack={handleUpdateTrack}
+          />) : (
+          <NowPlaying
+            nowPlaying={nowPlaying}
+            handleNowPlaying={handleNowPlaying}
+          />
+        )}
+        <Footer attributions={attributions} />
+      </div>
     </>
   );
 };
