@@ -1,4 +1,5 @@
 const NowPlaying = (props) => {
+  // console.log('props:', props)
   if (!props.selected) {
     return (<h1>No Track Selected</h1>);
   };

@@ -30,7 +30,7 @@ const App = () => {
 
   const handleFormView = (track) => {
     if (!track._id) setSelected(null);
-    setIsFormOpen(!isFormOpen);
+    setIsFormOpen(!isFormOpen)
   };
 
   const handleAddTrack = async (formData) => {
@@ -41,7 +41,7 @@ const App = () => {
         throw new Error(newTrack.err);
       };
 
-      setTracks([newTrack, ...pets]);
+      setTracks([newTrack, ...tracks]);
       setIsFormOpen(false);
     } catch (err) {
       console.log(err);
@@ -60,13 +60,13 @@ const App = () => {
     }
   };
 
-  const handleRemoveTrack = async (id) => {
+  const handleRemoveTrack = async (track) => {
     try {
-      const statusCode = await trackService.remove(id);
-      if (!statusCode.toString().match(/2\d{2}/)) {
-        throw new Error(`Status code was not a 200-299 value: ${statusCode}`);
+      const removedTrack = await trackService.remove(track._id);
+      if (!removedTrack) {
+        throw new Error(`Track not deleted: ${track.title}`);
       };
-      setTracks(tracks.filter(track => track._id !== id));
+      setTracks(tracks.filter(el => el._id !== track._id));
       setSelected(null);
     } catch (err) {
       console.log(err);
@@ -90,15 +90,13 @@ const App = () => {
       {(isFormOpen) ? (
         <TrackForm
           selected={selected}
-          isFormOpen={isFormOpen}
-          handleFormView={handleFormView}
           handleAddTrack={handleAddTrack}
           handleUpdateTrack={handleUpdateTrack}
         />) : (
-          <NowPlaying
+        <NowPlaying
           selected={selected}
-          />
-        )}
+        />
+      )}
     </>
   );
 };

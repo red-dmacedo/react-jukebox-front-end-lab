@@ -1,19 +1,17 @@
 const TrackList = (props) => {
-  const { tracks, selectTrack, handleFormView, isFormOpen, handlePlay, handleRemoveTrack } = props;
-
   return (
     <div className="sidebar-container">
       <h1>Track List</h1>
       <div className="list-container">
-        {(!tracks.length) ? (
+        {(!props.tracks.length) ? (
           <h2>No Tracks Available</h2>
         ) : (
           <ul>
-            {tracks.map((track) => (
+            {props.tracks.map((track) => (
               <li
                 key={track._id}
                 style={{ cursor: 'pointer', color: "#646CFF" }}
-                onClick={() => selectTrack(track)}
+                onClick={() => props.selectTrack(track)}
                 className="song-item"
               >
                 <p className="song-title">{track.title}</p>
@@ -21,20 +19,20 @@ const TrackList = (props) => {
                 <div className="track-btns">
                   <button
                     type="button"
-                    onClick={() => handlePlay(track)}
-                    className="play-btn play-icon"
+                    onClick={() => props.handlePlay(track)}
+                    className="play-btn play-icon track-btn"
                     title="Play Track"
                   >▶</button>
                   <button
                     type="button"
-                    onClick={() => handleFormView(track)}
-                    className="edit-btn"
+                    onClick={() => props.handleFormView(track)}
+                    className="edit-btn track-btn"
                     title="Edit Track"
                   >Edit</button>
                   <button
                     type="button"
-                    onClick={() => handleRemoveTrack(track._id)}
-                    className="delete-btn"
+                    onClick={() => props.handleRemoveTrack(track)}
+                    className="delete-btn track-btn"
                     title="Delete Track"
                   >🗑</button>
                 </div>
@@ -43,7 +41,7 @@ const TrackList = (props) => {
           </ul>
         )}
       </div>
-      <button onClick={handleFormView} id="form-change-btn">{isFormOpen ? "Close Form" : "New Track"}</button>
+      <button onClick={props.handleFormView} id="form-change-btn">{props.isFormOpen ? "Close Form" : "New Track"}</button>
     </div>
   );
 };

@@ -37,7 +37,7 @@ const update = async (formData, id) => {
 const remove = async (id) => {
     try {
         const res = await fetch(`${BASE_URL}/${id}`, { method: 'DELETE' });
-        return res.status;
+        return res.body;
     } catch (err) {
         console.log(err);
     };

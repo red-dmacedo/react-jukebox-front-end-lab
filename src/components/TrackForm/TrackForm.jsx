@@ -4,7 +4,7 @@ import { useState } from 'react';
 const initialState = { title: '', artist: '' };
 
 const TrackForm = (props) => {
-  const [formData, setFormData] = useState(initialState);
+  const [formData, setFormData] = useState( props.selected ? props.selected : initialState);
 
   const handleChange = (evt) => {
     setFormData({ ...formData, [evt.target.name]: evt.target.value })
@@ -15,7 +15,7 @@ const TrackForm = (props) => {
     if (props.selected) {
       props.handleUpdateTrack(formData, props.selected._id);
     } else {
-      props.handleUpdateTrack(formData);
+      props.handleAddTrack(formData);
     };
   };
 
