@@ -1,3 +1,5 @@
+import './TrackList.sass';
+
 const TrackList = (props) => {
   return (
     <div className="sidebar-container">

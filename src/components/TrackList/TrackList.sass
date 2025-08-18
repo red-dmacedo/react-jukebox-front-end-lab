@@ -1,0 +1,44 @@
+@import '../../../public/stylesheets/variables'
+
+/* ===== Classes ===== */
+.song-item
+  display: flex
+  flex-flow: column
+  justify-content: space-between
+  &:hover
+    background-color: $backgroundHighlight
+  p
+    margin: 0px 0px 10px 0px
+    color: $linkColor !important
+    &:hover
+      color: $linkColorHover !important
+  .song-artist
+    font-size: $fontSize*.7
+  .song-title
+    font-weight: bold
+
+.track-btns
+  display: flex
+  flex-direction: row
+  gap: 10px
+  button
+    width: 1/2
+    border-radius: 0px !important
+    background-color: transparent
+    display: flex
+    align-content: center
+    justify-content: center
+    font-size: $fontSize*.5
+
+.track-btn
+  &:hover
+    background-color: rgb(100,100,100)
+
+.input-line
+  display: flex
+  flex-flow: row wrap
+
+
+/* ===== Ids ===== */
+#form-change-btn
+  margin: 10px

@@ -1,7 +1,9 @@
+import './NowPlaying.sass';
+
 const NowPlaying = (props) => {
   // console.log('props:', props)
   if (!props.nowPlaying) {
-    return (<h1>No Track Selected</h1>);
+    return (<h1 className="now-playing">Select a Track</h1>);
   };
 
   return (
